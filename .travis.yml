@@ -1,0 +1,10 @@
+language: generic 
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t rowk/docker-react -f Dockerfile.dev .
+
+script:
+ - docker run -e CI=true rowk/docker-react npm run test
